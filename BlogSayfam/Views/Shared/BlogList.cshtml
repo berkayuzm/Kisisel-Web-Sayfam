@@ -1,0 +1,34 @@
+﻿@model List<BlogSayfam.Models.BlogModel>
+
+
+@{
+    int gosterimSayisi = 5;
+    int [] gosterilecek = new int[gosterimSayisi];
+    
+    Random random = new Random();
+    int i = 0;
+    while(i<gosterimSayisi)
+    {
+
+        int sayi = random.Next(1, Model.Count());
+        if (gosterilecek.Contains(sayi))
+        {
+
+            continue;
+        }
+        else {
+        <a href="/Home/BlogDetails/@Model[sayi].Id" class=" list-group-item-action flex-column align-items-start ">
+
+            <div class="card blog-liste flex-column list-group-item-action align-items-start ">
+                <div class="card-body">
+                    <h5 class="card-title"> @Model[sayi].Baslik </h5>
+                    <p class="card-text">@Model[sayi].Icerik</p>
+                </div>
+            </div>
+
+        </a>
+            gosterilecek[i] = sayi;
+            i++;
+        }
+    }
+}

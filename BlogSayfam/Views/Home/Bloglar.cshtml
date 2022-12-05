@@ -1,0 +1,35 @@
+﻿@model List<BlogSayfam.Models.Blog>
+@{
+    ViewBag.Title = "Bloglar";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+}
+
+<div class="container-sm">
+    <div class="blogsheader">
+        <h2>Tüm Bloglar</h2>
+    </div>
+    <div class="alert alert-warning" style="display:inline-block" role="alert">
+        Toplam <strong>@Model.Count()</strong>  tane blog listelendi.
+    </div>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card w-100 blog-card shadow">
+                    <img src="@Url.Content(item.Resim)" class="card-img-top cardimg" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Baslik</h5>
+                        <p class="card-text">
+                            @(item.Icerik.Length < 135 ? item.Icerik : item.Icerik.Substring(0, 135) + "...")
+                        </p>
+                        <a href="/Home/BlogDetails/@item.Id" class="d-inline btn btn-outline-dark">Devamını oku</a>
+                        <span class="badge badge-secondary float-right">@item.eklenmeTarihi</span>
+
+                    </div>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>
+

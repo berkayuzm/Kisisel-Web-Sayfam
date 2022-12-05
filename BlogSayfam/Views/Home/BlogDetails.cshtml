@@ -1,0 +1,22 @@
+﻿@model BlogSayfam.Models.Blog
+@{
+    ViewBag.Title = "Bloglar";
+    Layout = "~/Views/Shared/_LayoutPage2.cshtml";
+
+}
+    <div class="container-sm">
+        <h2 class="blog-header">@Model.Baslik</h2>
+        <div class="row">
+            <div class="col-md-8 imgdiv">
+                <span class="badge badge-pill badge-info blog-date">@Model.eklenmeTarihi</span>
+                <img src="@Url.Content(Model.Resim)" alt="Alternate Text" class="blog-details-img img-fluid" />
+                <p class="blog-content">@Model.Icerik</p>
+            </div>
+            <div class="col-md-4">
+                <h4 class="other-blogs-title">Diğer Bloglar</h4>
+            @Html.Action("BlogList", "Blogs")
+            </div>
+
+
+        </div>
+    </div>
